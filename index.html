@@ -43,7 +43,7 @@
       font-size: 24px;
       font-weight: bold;
       background: white;
-      color: #002f5f;
+      color: #00213b; /* найтемніший колір з логотипу */
       padding: 20px;
       margin: 30px auto 20px;
       border-radius: 16px;
@@ -58,9 +58,9 @@
       top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 100%);
       opacity: 0;
       border-radius: 50%;
       animation: puff 1.5s ease-out forwards;
@@ -87,7 +87,7 @@
       display: inline-block;
       margin-top: 20px;
       padding: 14px 24px;
-      background-color: #0047AB;
+      background-color: #00213b; /* найтемніший з логотипу */
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
@@ -97,12 +97,20 @@
     }
 
     .teka-link:hover {
-      background-color: #002e70;
+      background-color: #001628;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 10px;
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
   <img src="logo.png" alt="Логотип ТЕКА" class="logo">
+  <div class="subtitle">Ваше Digital-пророцтво</div>
   <div style="position: relative;">
     <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
