@@ -96,41 +96,67 @@
     }
 
     .subtitle {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: bold;
-      color: #0047AB;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      animation: glowText 1.2s ease-in-out infinite alternate;
-      text-shadow: 0 0 6px rgba(45, 114, 217, 0.6);
+      color: #002f5f;
+      background-color: #ffffff;
+      padding: 12px 24px;
+      margin-top: 24px;
+      border: 2px dashed #2d72d9;
+      border-radius: 16px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(45, 114, 217, 0.5);
+      animation: glowPulse 1.8s ease-in-out infinite;
     }
 
-    @keyframes glowText {
-      from {
-        text-shadow: 0 0 6px rgba(45, 114, 217, 0.3);
-      }
-      to {
-        text-shadow: 0 0 16px rgba(45, 114, 217, 0.7);
-      }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 8px rgba(45, 114, 217, 0.3); }
+      50% { box-shadow: 0 0 25px rgba(45, 114, 217, 0.8); }
+      100% { box-shadow: 0 0 8px rgba(45, 114, 217, 0.3); }
+    }
+
+    .subtitle::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      animation: shimmer 2.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 130%; }
     }
   </style>
 </head>
 <body>
   <img src="logo.png" alt="Логотип ТЕКА" class="logo">
-  
+
   <div style="position: relative;">
     <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
     <div id="smoke" class="smoke"></div>
   </div>
 
-  <div id="subtitle" class="subtitle">Ваше Digital-пророцтво</div>
+  <div id="subtitle" class="subtitle">🔮 Ваше Digital-пророцтво 🔮</div>
 
   <div id="message" class="message"></div>
-  
+
   <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
 
-  <audio id="crackSound" src="genickbruch-107521.mp3" preload="auto"></audio>
+  <audio id="crackSound" src="genickbruch-107521.mp3" preload="auto" autoplay muted></audio>
 
   <script>
     const messages = [
@@ -141,10 +167,16 @@
       'Папір — це минуле. Майбутнє у ТЕКА'
     ];
 
+    // Дозвіл на відтворення звуку
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('crackSound');
+      audio.muted = false;
+    }, { once: true });
+
     function crackCookie() {
       const crackSound = document.getElementById('crackSound');
       crackSound.currentTime = 0;
-      crackSound.play(); // 🔊 без затримки
+      crackSound.play();
 
       document.getElementById('cookie').style.display = 'none';
       document.getElementById('subtitle').style.display = 'none';
@@ -167,5 +199,4 @@
   </script>
 </body>
 </html>
-
 
