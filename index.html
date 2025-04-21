@@ -2,98 +2,97 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Печиво-пророцтво | ТЕКА</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Відкрий digital-пророцтво</title>
   <style>
     body {
-      background: #e6f0f8;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #e6f0f7;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      flex-direction: column;
-      text-align: center;
+      overflow: hidden;
     }
-    .button {
-      background-color: #3b7dd8;
-      color: white;
-      font-size: 20px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
+    #cookie-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
       cursor: pointer;
-      margin-top: 20px;
     }
-    .hidden { display: none; }
-    .wish {
-      font-size: 22px;
+    #cookie {
+      width: 100%;
+      transition: opacity 0.3s ease-in-out;
+    }
+    #smoke {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('smoke.gif') center/contain no-repeat;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    #message {
+      font-size: 20px;
+      text-align: center;
       margin-top: 20px;
-      animation: typewriter 2.5s steps(40) 1s 1 normal both;
+      opacity: 0;
+      animation: typing 3s steps(30, end) forwards;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 3px solid #000;
-      width: 0;
+      border-right: 2px solid black;
     }
-    @keyframes typewriter {
+    @keyframes typing {
       from { width: 0; }
-      to { width: 100%; }
-    }
-    video {
-      width: 280px;
-      border-radius: 16px;
-      margin-top: 20px;
+      to { width: 100%; opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <h1>🕳️ Відкрий digital-пророцтво</h1>
-
-  <div id="cookie-whole">
-    <video autoplay muted loop playsinline>
-      <source src="cookie-whole.mp4" type="video/mp4">
-    </video>
-    <button class="button" onclick="openFortune()">⭐️ Натисни, щоб дізнатися</button>
+  <div id="cookie-container" onclick="breakCookie()">
+    <img id="cookie" src="pechivo.png" alt="Ціле печиво">
+    <div id="smoke"></div>
   </div>
-
-  <div id="cookie-cracked" class="hidden">
-    <video id="crackVideo" autoplay muted playsinline>
-      <source src="cookie-crack.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div id="result" class="hidden">
-    <div id="fortune" class="wish"></div>
-    <a class="button" href="http://teka.infotech.gov.ua/" target="_blank">✨ Хочете дізнатися більше про ТЕКУ?</a>
-  </div>
-
-  <audio id="crack-sound" src="crack.mp3"></audio>
+  <div id="message"></div>
 
   <script>
-    const wishes = [
-      "Цього року ти точно позбудешся паперової тяганини!",
-      "На тебе чекає автоматизація та порядок у документах.",
-      "Вже скоро ти забудеш, що таке втрачений файл!",
-      "ТЕКА наближає тебе до digital-дзену.",
-      "Справжній прорив у роботі — на відстані одного кліку."
+    const messages = [
+      "Ваші документи вже чекають на вас... у TEKA",
+      "Настав час сказати 'прощавай' паперу",
+      "У кожному офісі є чарівник — TEKA",
+      "Ваш digital-шлях починається тут",
+      "Цифрове майбутнє в одному клаці — з ТЕКОЮ"
     ];
 
-    function openFortune() {
-      document.getElementById("cookie-whole").style.display = "none";
-      const cracked = document.getElementById("cookie-cracked");
-      cracked.classList.remove("hidden");
+    let step = 0;
+    const cookie = document.getElementById('cookie');
+    const smoke = document.getElementById('smoke');
+    const message = document.getElementById('message');
 
-      const video = document.getElementById("crackVideo");
-      document.getElementById("crack-sound").play();
-
-      video.onended = () => {
-        cracked.classList.add("hidden");
-        const result = document.getElementById("result");
-        const random = wishes[Math.floor(Math.random() * wishes.length)];
-        document.getElementById("fortune").textContent = random;
-        result.classList.remove("hidden");
-      };
+    function breakCookie() {
+      if (step === 0) {
+        cookie.src = 'pechivo.png';
+        step++;
+        setTimeout(breakCookie, 150);
+      } else if (step === 1) {
+        cookie.src = 'pechivo3.png';
+        step++;
+        setTimeout(breakCookie, 150);
+        setTimeout(() => {
+          smoke.style.opacity = 1;
+          cookie.style.opacity = 0;
+          setTimeout(() => {
+            smoke.style.opacity = 0;
+            message.textContent = messages[Math.floor(Math.random() * messages.length)];
+            message.style.opacity = 1;
+          }, 700);
+        }, 200);
+      }
     }
   </script>
 </body>
