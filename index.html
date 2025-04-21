@@ -43,7 +43,7 @@
       font-size: 24px;
       font-weight: bold;
       background: white;
-      color: #2d72d9; /* середній колір з логотипу */
+      color: #2d72d9;
       padding: 20px;
       margin: 30px auto 20px;
       border-radius: 16px;
@@ -82,7 +82,7 @@
       display: inline-block;
       margin-top: 20px;
       padding: 14px 24px;
-      background-color: #0057d8; /* лівий колір з логотипу */
+      background-color: #0057d8;
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
@@ -96,15 +96,22 @@
     }
 
     .subtitle {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 26px;
-      color: #2d72d9;
-      background: white;
-      padding: 12px 20px;
-      border-radius: 14px;
-      display: inline-block;
-      margin: 24px auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      font-size: 28px;
+      font-weight: bold;
+      color: #0047AB;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      animation: glowText 1.2s ease-in-out infinite alternate;
+      text-shadow: 0 0 6px rgba(45, 114, 217, 0.6);
+    }
+
+    @keyframes glowText {
+      from {
+        text-shadow: 0 0 6px rgba(45, 114, 217, 0.3);
+      }
+      to {
+        text-shadow: 0 0 16px rgba(45, 114, 217, 0.7);
+      }
     }
   </style>
 </head>
@@ -117,7 +124,7 @@
     <div id="smoke" class="smoke"></div>
   </div>
 
-  <div id="subtitle" class="subtitle">🥠 Ваше Digital-пророцтво</div>
+  <div id="subtitle" class="subtitle">Ваше Digital-пророцтво</div>
 
   <div id="message" class="message"></div>
   
@@ -135,7 +142,10 @@
     ];
 
     function crackCookie() {
-      document.getElementById('crackSound').play(); // 🎵 звук
+      const crackSound = document.getElementById('crackSound');
+      crackSound.currentTime = 0;
+      crackSound.play(); // 🔊 без затримки
+
       document.getElementById('cookie').style.display = 'none';
       document.getElementById('subtitle').style.display = 'none';
       document.getElementById('cracked').style.display = 'block';
@@ -157,4 +167,5 @@
   </script>
 </body>
 </html>
+
 
