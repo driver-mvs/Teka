@@ -9,13 +9,21 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #e6f0f7;
+      background: linear-gradient(135deg, #d6e9f8, #c2dcf1, #e8f2fc);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       overflow: hidden;
+    }
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      max-width: 180px;
+      height: auto;
     }
     #cookie-container {
       position: relative;
@@ -54,6 +62,10 @@
   </style>
 </head>
 <body>
+  <div class="logo-container">
+    <img src="logo.png" alt="ТЕКА логотип" class="logo">
+  </div>
+
   <div id="cookie-container" onclick="breakCookie()">
     <img id="cookie" src="pechivo.png" alt="Ціле печиво">
     <div id="smoke"></div>
@@ -97,3 +109,4 @@
   </script>
 </body>
 </html>
+
