@@ -43,7 +43,7 @@
       font-size: 24px;
       font-weight: bold;
       background: white;
-      color: #2d72d9; /* середній колір з логотипу */
+      color: #2d72d9;
       padding: 20px;
       margin: 30px auto 20px;
       border-radius: 16px;
@@ -82,7 +82,7 @@
       display: inline-block;
       margin-top: 20px;
       padding: 14px 24px;
-      background-color: #0057d8; /* лівий колір з логотипу */
+      background-color: #0057d8;
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
@@ -96,25 +96,41 @@
     }
 
     .subtitle {
-      font-family: 'Pacifico', cursive;
-      font-size: 28px;
-      color: #0047AB;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
-      margin-top: 30px;
-      margin-bottom: 30px;
-      display: block;
+      font-size: 22px;
+      font-weight: bold;
+      color: #002f5f;
+      background-color: #ffffff;
+      padding: 12px 24px;
+      margin-top: 24px;
+      border: 2px dashed #2d72d9;
+      border-radius: 16px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 12px rgba(45, 114, 217, 0.4);
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 6px rgba(45, 114, 217, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(45, 114, 217, 0.6); }
+      100% { box-shadow: 0 0 6px rgba(45, 114, 217, 0.3); }
     }
   </style>
 </head>
 <body>
   <img src="logo.png" alt="Логотип ТЕКА" class="logo">
+
   <div style="position: relative;">
     <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
     <div id="smoke" class="smoke"></div>
   </div>
-  <div id="subtitle" class="subtitle">Ваше Digital-пророцтво</div>
+
+  <div id="subtitle" class="subtitle">🔮 Ваше Digital-пророцтво 🔮</div>
+
   <div id="message" class="message"></div>
+
   <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
 
   <script>
