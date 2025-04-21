@@ -1,91 +1,117 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEKA Fortune Cookie</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ТЕКА — Печиво-пророцтво</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #d0eaff, #c1dcf5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
+      background: linear-gradient(to bottom right, #cbe5fd, #d0e8ff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
+      color: #002f5f;
     }
 
     .logo {
-      margin-top: 30px;
-      width: 200px;
-      max-width: 80vw;
+      max-width: 200px;
+      margin: 40px auto 20px;
+      display: block;
     }
 
     .cookie {
       width: 220px;
-      max-width: 60vw;
-      margin: 40px 0;
-      transition: transform 0.3s ease;
-    }
-
-    .cookie:hover {
-      transform: scale(1.05);
+      max-width: 80vw;
+      margin: 0 auto;
       cursor: pointer;
+      transition: transform 0.2s ease-in-out;
     }
 
-    .message-box {
+    .cookie:active {
+      transform: scale(0.96);
+    }
+
+    .cracked {
       display: none;
-      background: white;
-      padding: 20px 30px;
-      border-radius: 16px;
-      margin-top: 30px;
-      font-size: 1.4em;
+      width: 260px;
+      max-width: 85vw;
+      margin: 0 auto;
+    }
+
+    .message {
+      display: none;
+      font-size: 24px;
       font-weight: bold;
-      color: #002244;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      max-width: 90%;
+      background: white;
+      color: #002f5f;
+      padding: 20px;
+      margin: 30px auto;
+      border-radius: 16px;
+      max-width: 90vw;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
+    .smoke {
+      display: none;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(white 20%, transparent 70%);
+      opacity: 0;
+      border-radius: 50%;
+      animation: smokeRise 1.2s ease-out forwards;
+      z-index: 5;
     }
 
-    @keyframes fadeIn {
+    @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes smokeRise {
+      0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+      50% { opacity: 1; transform: scale(1.1) translate(-50%, -70%); }
+      100% { opacity: 0; transform: scale(1.8) translate(-50%, -90%); }
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="TEKA Logo" class="logo">
-
-  <img src="pechivo1.png" alt="Fortune Cookie" class="cookie" id="cookie">
-
-  <div class="message-box" id="messageBox">Цього року ви точно забудете про папір!</div>
+  <img src="logo.png" alt="Логотип ТЕКА" class="logo">
+  <div style="position: relative;">
+    <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
+    <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
+    <div id="smoke" class="smoke"></div>
+  </div>
+  <div id="message" class="message"></div>
 
   <script>
-    const cookie = document.getElementById('cookie');
-    const messageBox = document.getElementById('messageBox');
-
     const messages = [
-      "Цього року ви точно забудете про папір!",
-      "На вас чекає цифровий прорив!",
-      "TEKA вже готує для вас сюрприз!",
-      "Менше друку — більше ефективності!",
-      "Ваш документ вже в хмарі, перевірте TEKA!"
+      'Цього року ви точно забудете про папір!',
+      'Ваші документи вже чекають на вас… у ТЕКА',
+      '2025 — час діяти швидше, без друку',
+      'Документообіг без зайвого руху — ТЕКА',
+      'Папір — це минуле. Майбутнє у ТЕКА'
     ];
 
-    cookie.addEventListener('click', () => {
-      cookie.src = "pechivo6.png";
-      cookie.style.width = "270px";
-      const random = Math.floor(Math.random() * messages.length);
-      messageBox.innerText = messages[random];
-      messageBox.classList.add("fade-in");
-      messageBox.style.display = "block";
-    });
+    function crackCookie() {
+      document.getElementById('cookie').style.display = 'none';
+      document.getElementById('cracked').style.display = 'block';
+
+      const smoke = document.getElementById('smoke');
+      smoke.style.display = 'block';
+      smoke.classList.add('smoke');
+
+      setTimeout(() => {
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        const messageBox = document.getElementById('message');
+        messageBox.innerText = msg;
+        messageBox.style.display = 'block';
+      }, 1000);
+    }
   </script>
 </body>
 </html>
