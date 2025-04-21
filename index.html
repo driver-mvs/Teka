@@ -52,25 +52,26 @@
       animation: fadeInUp 0.6s ease-out forwards;
     }
 
-    .smoke {
-      display: none;
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 100%);
-      opacity: 0;
-      border-radius: 50%;
-      animation: puff 1.5s ease-out forwards;
-      z-index: 10;
-    }
+   .smoke {
+  display: none;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(white 20%, transparent 70%);
+  opacity: 0;
+  border-radius: 50%;
+  animation: smokeRise 1.2s ease-out forwards;
+  z-index: 5;
+}
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes smokeRise {
+  0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+  50% { opacity: 1; transform: scale(1.1) translate(-50%, -70%); }
+  100% { opacity: 0; transform: scale(1.8) translate(-50%, -90%); }
+}
 
     @keyframes puff {
       0% {
@@ -100,11 +101,13 @@
       background-color: #001628;
     }
 
-    .subtitle {
-      font-size: 22px;
-      font-weight: 600;
-      margin-top: 10px;
-      margin-bottom: 30px;
+   .subtitle {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  color: #0047AB;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+  margin-top: 10px;
+  margin-bottom: 30px;
     }
   </style>
 </head>
