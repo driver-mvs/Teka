@@ -88,13 +88,8 @@
 
     function breakCookie() {
       if (step === 0) {
-        cookie.src = 'pechivo.png';
-        step++;
-        setTimeout(breakCookie, 150);
-      } else if (step === 1) {
         cookie.src = 'pechivo3.png';
         step++;
-        setTimeout(breakCookie, 150);
         setTimeout(() => {
           smoke.style.opacity = 1;
           cookie.style.opacity = 0;
@@ -103,10 +98,9 @@
             message.textContent = messages[Math.floor(Math.random() * messages.length)];
             message.style.opacity = 1;
           }, 700);
-        }, 200);
+        }, 300);
       }
     }
   </script>
 </body>
 </html>
-
