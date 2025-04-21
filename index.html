@@ -24,16 +24,24 @@
       max-width: 80vw;
       margin: 0 auto;
       cursor: pointer;
-      transition: transform 0.2s ease-in-out;
       position: relative;
-      display: block;
+      display: inline-block;
+      z-index: 1;
+      overflow: hidden;
+      transition: transform 0.2s ease-in-out;
     }
 
     .cookie:active {
       transform: scale(0.96);
     }
 
-    /* Shimmer effect on cookie */
+    .cookie img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+    }
+
     .cookie::after {
       content: '';
       position: absolute;
@@ -49,8 +57,7 @@
       );
       z-index: 2;
       pointer-events: none;
-      animation: shine 3s infinite;
-      border-radius: 16px;
+      animation: shine 2s linear infinite;
     }
 
     @keyframes shine {
@@ -173,7 +180,9 @@
   <img src="logo.png" alt="Логотип ТЕКА" class="logo">
 
   <div style="position: relative;">
-    <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
+    <div class="cookie" onclick="crackCookie()">
+      <img src="pechivo1.png" alt="Печиво">
+    </div>
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
     <div id="smoke" class="smoke"></div>
   </div>
@@ -194,7 +203,7 @@
     ];
 
     function crackCookie() {
-      document.getElementById('cookie').style.display = 'none';
+      document.querySelector('.cookie').style.display = 'none';
       document.getElementById('subtitle').style.display = 'none';
       document.getElementById('cracked').style.display = 'block';
 
