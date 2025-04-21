@@ -45,7 +45,7 @@
       background: white;
       color: #002f5f;
       padding: 20px;
-      margin: 30px auto;
+      margin: 30px auto 20px;
       border-radius: 16px;
       max-width: 90vw;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -58,13 +58,13 @@
       top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(white 20%, transparent 70%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
       opacity: 0;
       border-radius: 50%;
-      animation: smokeRise 1.2s ease-out forwards;
-      z-index: 5;
+      animation: puff 1.5s ease-out forwards;
+      z-index: 10;
     }
 
     @keyframes fadeInUp {
@@ -72,10 +72,32 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes smokeRise {
-      0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
-      50% { opacity: 1; transform: scale(1.1) translate(-50%, -70%); }
-      100% { opacity: 0; transform: scale(1.8) translate(-50%, -90%); }
+    @keyframes puff {
+      0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2.5) translate(-50%, -90%);
+      }
+    }
+
+    .teka-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 24px;
+      background-color: #0047AB;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+
+    .teka-link:hover {
+      background-color: #002e70;
     }
   </style>
 </head>
@@ -87,6 +109,7 @@
     <div id="smoke" class="smoke"></div>
   </div>
   <div id="message" class="message"></div>
+  <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
 
   <script>
     const messages = [
@@ -103,14 +126,15 @@
 
       const smoke = document.getElementById('smoke');
       smoke.style.display = 'block';
-      smoke.classList.add('smoke');
 
       setTimeout(() => {
+        smoke.style.display = 'none';
         const msg = messages[Math.floor(Math.random() * messages.length)];
         const messageBox = document.getElementById('message');
         messageBox.innerText = msg;
         messageBox.style.display = 'block';
-      }, 1000);
+        document.getElementById('tekaLink').style.display = 'inline-block';
+      }, 1500);
     }
   </script>
 </body>
