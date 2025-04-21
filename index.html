@@ -2,86 +2,90 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Digital-пророцтво від ТЕКА</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEKA Fortune Cookie</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #d3eaff, #b6d9f9);
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #d0eaff, #c1dcf5);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      justify-content: flex-start;
+      height: 100vh;
       text-align: center;
-      overflow: hidden;
     }
 
     .logo {
-      width: 160px;
-      margin-bottom: 30px;
+      margin-top: 30px;
+      width: 200px;
+      max-width: 80vw;
     }
 
-    #cookie-img {
-      width: 200px;
-      max-width: 80%;
-      cursor: pointer;
+    .cookie {
+      width: 220px;
+      max-width: 60vw;
+      margin: 40px 0;
       transition: transform 0.3s ease;
     }
 
-    #cookie-img:hover {
+    .cookie:hover {
       transform: scale(1.05);
+      cursor: pointer;
     }
 
-    #fortune {
+    .message-box {
       display: none;
-      font-size: 24px;
-      font-weight: 600;
-      color: #00274D;
-      background: #ffffffd6;
-      padding: 16px 24px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      background: white;
+      padding: 20px 30px;
+      border-radius: 16px;
       margin-top: 30px;
-      max-width: 80%;
-      animation: fadeIn 0.8s ease-in-out;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #002244;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-width: 90%;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="ТЕКА" class="logo">
+  <img src="logo.png" alt="TEKA Logo" class="logo">
 
-  <img src="pechivo1.png" alt="Печиво" id="cookie-img">
+  <img src="pechivo1.png" alt="Fortune Cookie" class="cookie" id="cookie">
 
-  <div id="fortune"></div>
+  <div class="message-box" id="messageBox">Цього року ви точно забудете про папір!</div>
 
   <script>
-    const cookieImg = document.getElementById('cookie-img');
-    const fortuneText = document.getElementById('fortune');
-    const fortunes = [
-      "Ваші документи вже чекають на вас... у TEKA",
+    const cookie = document.getElementById('cookie');
+    const messageBox = document.getElementById('messageBox');
+
+    const messages = [
       "Цього року ви точно забудете про папір!",
-      "Цифрове щастя поруч — з електронним підписом.",
-      "Ваш успіх підписано ТЕКОЮ.",
-      "Хрусть — і документи вже в архіві!"
+      "На вас чекає цифровий прорив!",
+      "TEKA вже готує для вас сюрприз!",
+      "Менше друку — більше ефективності!",
+      "Ваш документ вже в хмарі, перевірте TEKA!"
     ];
 
-    cookieImg.addEventListener('click', () => {
-      cookieImg.src = 'pechivo6.png';
-      const random = fortunes[Math.floor(Math.random() * fortunes.length)];
-
-      setTimeout(() => {
-        fortuneText.textContent = random;
-        fortuneText.style.display = 'inline-block';
-      }, 500);
+    cookie.addEventListener('click', () => {
+      cookie.src = "pechivo6.png";
+      cookie.style.width = "270px";
+      const random = Math.floor(Math.random() * messages.length);
+      messageBox.innerText = messages[random];
+      messageBox.classList.add("fade-in");
+      messageBox.style.display = "block";
     });
   </script>
 </body>
 </html>
-
