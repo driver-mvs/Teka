@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>ТЕКА — Печиво-пророцтво</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fjalla+One&family=Rubik+Scribble&family=Anton&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -16,21 +15,9 @@
 
     .logo {
       max-width: 200px;
-      margin: 40px auto 20px;
+      margin: 40px auto 10px;
       display: block;
     }
-
-    .subtitle {
-      font-size: 28px;
-      color: #0047AB;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-    .style1 { font-family: 'Pacifico', cursive; }
-    .style2 { font-family: 'Fjalla One', sans-serif; letter-spacing: 1px; }
-    .style3 { font-family: 'Rubik Scribble', cursive; font-size: 30px; }
-    .style4 { font-family: 'Anton', sans-serif; font-weight: bold; font-size: 32px; }
 
     .cookie {
       width: 220px;
@@ -56,7 +43,7 @@
       font-size: 24px;
       font-weight: bold;
       background: white;
-      color: #00213b;
+      color: #2d72d9; /* середній колір з логотипу */
       padding: 20px;
       margin: 30px auto 20px;
       border-radius: 16px;
@@ -92,10 +79,10 @@
     }
 
     .teka-link {
-      display: none;
+      display: inline-block;
       margin-top: 20px;
       padding: 14px 24px;
-      background-color: #00213b;
+      background-color: #0057d8; /* лівий колір з логотипу */
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
@@ -105,22 +92,30 @@
     }
 
     .teka-link:hover {
-      background-color: #001628;
+      background-color: #0041a8;
+    }
+
+    .subtitle {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: #0047AB;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+      margin-top: 30px;
+      margin-bottom: 30px;
+      display: block;
     }
   </style>
 </head>
 <body>
   <img src="logo.png" alt="Логотип ТЕКА" class="logo">
-  <div id="subtitle" class="subtitle style4">Ваше Digital-пророцтво</div>
-
   <div style="position: relative;">
     <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
     <div id="smoke" class="smoke"></div>
   </div>
-
+  <div id="subtitle" class="subtitle">Ваше Digital-пророцтво</div>
   <div id="message" class="message"></div>
-  <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link">🔗 Перейти на сайт ТЕКА</a>
+  <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
 
   <script>
     const messages = [
@@ -133,24 +128,24 @@
 
     function crackCookie() {
       document.getElementById('cookie').style.display = 'none';
-      document.getElementById('cracked').style.display = 'block';
       document.getElementById('subtitle').style.display = 'none';
+      document.getElementById('cracked').style.display = 'block';
 
       const smoke = document.getElementById('smoke');
       smoke.style.display = 'block';
 
-      // Одразу показуємо побажання
       const msg = messages[Math.floor(Math.random() * messages.length)];
       const messageBox = document.getElementById('message');
       messageBox.innerText = msg;
       messageBox.style.display = 'block';
+
       document.getElementById('tekaLink').style.display = 'inline-block';
 
-      // Приховати дим після завершення анімації
       setTimeout(() => {
         smoke.style.display = 'none';
-      }, 1200);
+      }, 1000);
     }
   </script>
 </body>
 </html>
+
