@@ -11,6 +11,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       color: #002f5f;
+      padding: 0 16px;
     }
 
     .logo {
@@ -50,7 +51,6 @@
       max-width: 90vw;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       animation: fadeInUp 0.6s ease-out forwards;
-      box-sizing: border-box;
     }
 
     .smoke {
@@ -79,21 +79,38 @@
       100% { opacity: 0; transform: scale(1.8) translate(-50%, -90%); }
     }
 
-    .teka-link {
-      display: inline-block;
-      margin-top: 20px;
+    .teka-link, .feedback-link {
+      display: block;
+      margin: 16px auto 0;
       padding: 14px 24px;
-      background-color: #0057d8;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+      width: 100%;
+      max-width: 320px;
       font-weight: bold;
       font-size: 18px;
-      transition: background 0.3s;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .teka-link {
+      background-color: #0057d8;
+      color: #fff;
     }
 
     .teka-link:hover {
       background-color: #0041a8;
+    }
+
+    .feedback-link {
+      background-color: #ffffff;
+      color: #0057d8;
+      border: 2px solid #0057d8;
+    }
+
+    .feedback-link:hover {
+      background-color: #f0f8ff;
+      color: #003f9e;
     }
 
     .subtitle {
@@ -105,7 +122,7 @@
       margin-top: 24px;
       border: 2px dashed #2d72d9;
       border-radius: 16px;
-      max-width: 300px;
+      max-width: 320px;
       margin-left: auto;
       margin-right: auto;
       position: relative;
@@ -127,12 +144,7 @@
       left: -75%;
       width: 50%;
       height: 100%;
-      background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
       animation: shimmer 2.5s infinite;
     }
 
@@ -157,6 +169,8 @@
 
   <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
 
+  <a href="https://teka.infotech.gov.ua/feedback" target="_blank" id="feedbackLink" class="feedback-link" style="display:none;">📩 Форма для зворотного зв'язку</a>
+
   <audio id="crackSound" src="muz.mp3" preload="auto" autoplay muted></audio>
 
   <script>
@@ -168,6 +182,7 @@
       'Папір — це минуле. Майбутнє у ТЕКА'
     ];
 
+    // Дозвіл на звук
     window.addEventListener('click', () => {
       const audio = document.getElementById('crackSound');
       audio.muted = false;
@@ -191,6 +206,7 @@
       messageBox.style.display = 'block';
 
       document.getElementById('tekaLink').style.display = 'inline-block';
+      document.getElementById('feedbackLink').style.display = 'inline-block';
 
       setTimeout(() => {
         smoke.style.display = 'none';
@@ -199,5 +215,4 @@
   </script>
 </body>
 </html>
-
 
