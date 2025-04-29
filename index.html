@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom right, #cbe5fd, #d0e8ff);
+      background: #ffffff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       color: #002f5f;
@@ -50,6 +50,7 @@
       max-width: 90vw;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       animation: fadeInUp 0.6s ease-out forwards;
+      box-sizing: border-box;
     }
 
     .smoke {
@@ -167,7 +168,6 @@
       'Папір — це минуле. Майбутнє у ТЕКА'
     ];
 
-    // Дозвіл на відтворення звуку
     window.addEventListener('click', () => {
       const audio = document.getElementById('crackSound');
       audio.muted = false;
@@ -199,4 +199,5 @@
   </script>
 </body>
 </html>
+
 
