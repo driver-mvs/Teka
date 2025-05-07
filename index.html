@@ -1,199 +1,88 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ТЕКА — Печиво-пророцтво</title>
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(to bottom, #f5faff 0%, #d8ecff 80%, #ffffff 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      color: #002f5f;
-    }
-    .logo {
-      max-width: 200px;
-      margin: 40px auto 10px;
-      display: block;
-    }
-    .cookie {
-      width: 220px;
-      max-width: 80vw;
-      margin: 0 auto;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-    }
-    .cookie:active {
-      transform: scale(0.96);
-    }
-    .cracked {
-      display: none;
-      width: 320px;
-      max-width: 85vw;
-      margin: 0 auto;
-    }
-    .message {
-      display: none;
-      font-size: 24px;
-      font-weight: bold;
-      background: white;
-      color: #2d72d9;
-      padding: 20px;
-      margin: 30px auto 20px;
-      border-radius: 16px;
-      max-width: 90vw;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-    .smoke {
-      display: none;
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(white 20%, transparent 70%);
-      opacity: 0;
-      border-radius: 50%;
-      animation: smokeRise 1.2s ease-out forwards;
-      z-index: 5;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes smokeRise {
-      0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
-      50% { opacity: 1; transform: scale(1.1) translate(-50%, -70%); }
-      100% { opacity: 0; transform: scale(1.8) translate(-50%, -90%); }
-    }
-    .teka-link, .feedback-link {
-      display: block;
-      margin: 16px auto 0;
-      padding: 14px 24px;
-      width: 100%;
-      max-width: 320px;
-      font-weight: bold;
-      font-size: 18px;
-      text-align: center;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .teka-link {
-      background-color: #0057d8;
-      color: #fff;
-    }
-    .teka-link:hover {
-      background-color: #0041a8;
-    }
-    .feedback-link {
-      background-color: #ffffff;
-      color: #0057d8;
-      border: 2px solid #0057d8;
-    }
-    .feedback-link:hover {
-      background-color: #f0f8ff;
-      color: #003f9e;
-    }
-    .subtitle {
-      font-size: 22px;
-      font-weight: bold;
-      color: #002f5f;
-      background-color: #ffffff;
-      padding: 12px 24px;
-      margin-top: 24px;
-      border: 2px dashed #2d72d9;
-      border-radius: 16px;
-      max-width: 320px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(45, 114, 217, 0.5);
-      animation: glowPulse 1.8s ease-in-out infinite;
-      cursor: pointer;
-    }
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 8px rgba(45, 114, 217, 0.3); }
-      50% { box-shadow: 0 0 25px rgba(45, 114, 217, 0.8); }
-      100% { box-shadow: 0 0 8px rgba(45, 114, 217, 0.3); }
-    }
-    .subtitle::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
-      animation: shimmer 2.5s infinite;
-    }
-    @keyframes shimmer {
-      0% { left: -75%; }
-      100% { left: 130%; }
-    }
-  </style>
-</head>
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom, #f5faff 0%, #d8ecff 80%, #ffffff 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: #002f5f;
+  }
+
+  .logo {
+    max-width: 200px;
+    margin: 40px auto 20px;
+    display: block;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height: 100vh;
+    padding-top: 40px;
+  }
+
+  .cookie {
+    width: 220px;
+    max-width: 80vw;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .cookie:active {
+    transform: scale(0.96);
+  }
+
+  .cracked {
+    display: none;
+    width: 220px;
+    max-width: 80vw;
+    margin-top: 20px;
+  }
+
+  .message {
+    display: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0057d8;
+    padding: 12px 20px;
+    margin: 20px auto 0;
+    max-width: 90vw;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 <body>
-  <img src="logo.png" alt="Логотип ТЕКА" class="logo">
+  <div class="container">
+    <img src="logo.png" alt="Логотип ТЕКА" class="logo">
 
-  <div style="position: relative;" onclick="crackCookie()">
-    <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie">
+    <img src="pechivo1.png" alt="Печиво" id="cookie" class="cookie" onclick="crackCookie()">
     <img src="pechivo6.png" alt="Розламане печиво" id="cracked" class="cracked">
-    <div id="smoke" class="smoke"></div>
+
+    <div id="message" class="message"></div>
   </div>
-
-  <div id="subtitle" class="subtitle" onclick="crackCookie()">🔮 Ваше Digital-пророцтво 🔮</div>
-
-  <div id="message" class="message"></div>
-
-  <a href="https://teka.infotech.gov.ua/" target="_blank" id="tekaLink" class="teka-link" style="display:none;">🔗 Перейти на сайт ТЕКА</a>
-  <a href="https://teka.infotech.gov.ua/#section-id-6" target="_blank" id="feedbackLink" class="feedback-link" style="display:none;">📩 Форма для зворотного зв'язку</a>
-
-  <audio id="crackSound" src="muz.mp3" preload="auto" autoplay muted></audio>
 
   <script>
     const messages = [
-      'Зорі обіцяють: дедлайни будуть чіткі, а люди — приємні.',
       'Хтось скаже “дякую” в чаті — цього разу щиро.',
-      'У прогнозі на тиждень: 20% дедлайнів, 80% спокою.'
+      'У прогнозі на тиждень: 20% дедлайнів, 80% кайфу.'
     ];
 
-    window.addEventListener('click', () => {
-      const audio = document.getElementById('crackSound');
-      audio.muted = false;
-    }, { once: true });
-
     function crackCookie() {
-      const crackSound = document.getElementById('crackSound');
-      crackSound.currentTime = 0;
-      crackSound.play();
-
-      document.getElementById('cookie').style.pointerEvents = 'none';
-      document.getElementById('cookie').style.opacity = '0';
-      document.getElementById('subtitle').style.pointerEvents = 'none';
-      document.getElementById('subtitle').style.opacity = '0';
+      document.getElementById('cookie').style.display = 'none';
       document.getElementById('cracked').style.display = 'block';
-
-      const smoke = document.getElementById('smoke');
-      smoke.style.display = 'block';
-
       const msg = messages[Math.floor(Math.random() * messages.length)];
       const messageBox = document.getElementById('message');
       messageBox.innerText = msg;
       messageBox.style.display = 'block';
-
-      document.getElementById('tekaLink').style.display = 'inline-block';
-      document.getElementById('feedbackLink').style.display = 'inline-block';
-
-      setTimeout(() => {
-        smoke.style.display = 'none';
-      }, 1000);
     }
   </script>
 </body>
-</html>
+
 
